@@ -73,6 +73,10 @@ header .header_wrapper > div:first-child a {
 
 header .header_wrapper > ul {
     flex-grow: 1;
+
+    &.responsive {
+        display: none;
+    }
 }
 
 header .header_wrapper > ul > li > :is(a, label) {
@@ -101,7 +105,7 @@ header .header_wrapper > ul > li > label > .chevron {
     transform: translateY(-2px);
 }
 
-header .header_wrapper > .cart_btn {
+header .header_wrapper .cart_btn {
     padding: .5rem 1rem;
     border: 1px solid var(--dark-clr);
     border-radius: .375rem;
@@ -112,12 +116,12 @@ header .header_wrapper > .cart_btn {
     }
 }
 
-header .header_wrapper > .cart_btn:hover {
+header .header_wrapper .cart_btn:hover {
     background-color: var(--dark-clr);
     color: white;
 }
 
-header .header_wrapper > .cart_btn .count {
+header .header_wrapper .cart_btn .count {
     background-color: var(--dark-clr);
     color: white;
     width: 20px;
@@ -132,14 +136,32 @@ header .header_wrapper > .toggle_btn {
     padding: .5rem .75rem;
     border-radius: .375rem;
     display: none;
+    cursor: pointer;
 }
 
+header .drop_menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms ease-in-out;
+}
+
+header .drop_menu > ul {
+    overflow: hidden;
+}
+
+header .header_wrapper:has(.toggleCheck:checked) + .drop_menu {
+    grid-template-rows: 1fr;
+}
 
 @media (max-width: 992px) {
-    header .header_wrapper > ul:not(.responsive) {
+    header .header_wrapper > ul {
         display: none;
+
+        &.responsive {
+            display: block;
+        }
     }
-    header .header_wrapper > .cart_btn {
+    header .header_wrapper .cart_btn {
         display: none;
 
         &.responsive_btn {
