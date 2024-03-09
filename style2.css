@@ -1,7 +1,8 @@
 :root {
-  --border-clr: #dee2e6;
-  --border-template: 1px solid var(--border-clr);
+  --border-clr: 222 226 230;
+  --border-template: 1px solid rgb(var(--border-clr));
   --light-rgb: 248 249 250;
+  --gray-text-clr: 99 100 100;
 }
 
 * {
@@ -21,8 +22,36 @@ a {
   text-decoration: none;
 }
 
+button {
+  all: unset;
+  cursor: pointer;
+}
+
 .flex {
   display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+#toggleSidebar {
+  display: none;
+
+  /* &:checked ~ aside
+    tilde isaresi onun ucundur ki
+    + kimi isleyir sadece olaraq ozunnen sonra gelen ilk qardas elementi deyil
+    butun hemin adda elementleri secir
+  */
+
+  &:checked + aside {
+    width: 0;
+    overflow: hidden;
+  }
 }
 
 .wrapper {
@@ -36,6 +65,35 @@ a {
     height: 100dvh;
     border-right: var(--border-template);
     /* 1px solid #dee2sda */
+    transition: width 200ms;
+
+    .logo {
+      font-size: 1.2rem;
+      background-color: rgb(var(--light-rgb));
+      height: 60px;
+      border-bottom: var(--border-template);
+      padding: 1rem;
+      white-space: nowrap;
+    }
+
+    .nav_menu {
+      li {
+        a {
+          display: block;
+          padding: 16px;
+          color: rgb(var(--gray-text-clr));
+          white-space: nowrap;
+
+          &:hover {
+            background-color: rgb(229, 229, 229);
+          }
+        }
+
+        &:not(:last-child) {
+          border-bottom: var(--border-template);
+        }
+      }
+    }
   }
 
   & .main_side {
@@ -49,6 +107,60 @@ a {
       background-color: rgb(var(--light-rgb));
                             /* 248 249 250 */
       border-bottom: var(--border-template);
+      padding-inline: 1rem;
+
+      .toggle_sidebar {
+        display: inline-flex;
+        background-color: rgb(11, 110, 215);
+        color: white;
+        padding: .5rem .75rem;
+        border-radius: .375rem;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .nav_links {
+        column-gap: .75rem;
+        li {
+          a, label {
+            color: rgb(var(--gray-text-clr));
+            transition: color 200ms ease;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+
+            &:is(:hover, :focus) {
+              color: rgb(0, 0, 0, .7);
+            }
+
+            > i {
+              font-size: 10px;
+              transform: translateY(-2px);
+            }
+
+            #dropMenu {
+              display: none;
+              &:checked + .drop_menu {
+                opacity: 1;
+                visibility: visible;
+              }
+            }
+
+            .drop_menu {
+              position: absolute;
+              top: calc(100% + 10px);
+              right: 0;
+              background-color: white;
+              border: var(--border-template);
+              border-radius: .375rem;
+              padding-block: .5rem;
+              opacity: 0;
+              visibility: hidden;
+              transition: 100ms ease;
+            }
+          }
+        }
+      }
     }
   }
 
