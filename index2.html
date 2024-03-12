@@ -36,9 +36,12 @@
             </ul>
         </aside>
         <div class="main_side">
-            <header class="flex items-center justify-between">
+            <header class="flex items-center justify-between" id="header">
                 <label class="toggle_sidebar" for="toggleSidebar">
                     Toggle Menu
+                </label>
+                <label class="toggle_navbar items-center justify-center" for="header">
+                    <i class="fa-solid fa-bars"></i>
                 </label>
                 <ul class="nav_links flex">
                     <li>
@@ -54,7 +57,19 @@
 
                             <input type="checkbox" id="dropMenu">
                             <div class="drop_menu">
-                                salam
+                                <ul class="drop_body">
+                                    <li>
+                                        <a href="#">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Another action</a>
+                                    </li>
+                                </ul>
+                                <ul class="drop_foot">
+                                    <li>
+                                        <a href="#">Something else here</a>
+                                    </li>
+                                </ul>
                             </div>
                         </label>
                     </li>
