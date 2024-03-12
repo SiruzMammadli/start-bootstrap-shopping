@@ -1,0 +1,53 @@
+
+.box {
+    width: 700px;
+    height: 400px;
+    background-color: darkgreen;
+    position: relative;
+
+    .child-box {
+        margin: 50px;
+        padding: 30px;
+        width: 100px;
+        height: 100px;
+        background-color: yellowgreen;
+        position: absolute;
+        animation: squareLoop 4s infinite;
+        /* 
+                                infinite sonsuza qeder isleyir
+                                forwards 100% olduqda hemin yerde de qalir basa qayitmir
+        */
+        border-radius: 50%;
+        /* transform: scale(1); */ /* boyudur */
+        /* transition: transform 300ms; */
+
+        /* &:hover {
+            transform: scale(1.2);
+        } */
+    }
+}
+
+@keyframes squareLoop {
+    /* from {
+     transform: translate(0, 0);
+    }
+    to {
+        transform: translate(50%, 50%);
+    } */
+
+    0% {
+        transform: translate(440px, 0) rotate(0);
+    }
+    25% {
+        transform: translate(440px, 140px) rotate(90deg);
+    }
+    50% {
+        transform: translate(0, 140px) rotate(180deg);
+    }
+    75% {
+        transform: translate(0, 0) rotate(270deg);
+    }
+    100% {
+        transform: translate(440px, 0) rotate(360deg);
+    }
+}

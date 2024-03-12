@@ -121,6 +121,7 @@ button {
 
       .nav_links {
         column-gap: .75rem;
+        
         li {
           a, label {
             color: rgb(var(--gray-text-clr));
