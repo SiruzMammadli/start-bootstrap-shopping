@@ -36,44 +36,48 @@
             </ul>
         </aside>
         <div class="main_side">
-            <header class="flex items-center justify-between" id="header">
+            <header class="flex items-center justify-between">
                 <label class="toggle_sidebar" for="toggleSidebar">
                     Toggle Menu
                 </label>
-                <label class="toggle_navbar items-center justify-center" for="header">
+                <label class="toggle_navbar items-center justify-center" for="toggleHeader">
                     <i class="fa-solid fa-bars"></i>
                 </label>
-                <ul class="nav_links flex">
-                    <li>
-                        <a href="#">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">Link</a>
-                    </li>
-                    <li>
-                        <label class="toggleDropMenu" for="dropMenu">
-                            Dropdown
-                            <i class="fa-solid fa-chevron-down"></i>
-
-                            <input type="checkbox" id="dropMenu">
-                            <div class="drop_menu">
-                                <ul class="drop_body">
-                                    <li>
-                                        <a href="#">Action</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Another action</a>
-                                    </li>
-                                </ul>
-                                <ul class="drop_foot">
-                                    <li>
-                                        <a href="#">Something else here</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </label>
-                    </li>
-                </ul>
+                <input type="checkbox" id="toggleHeader"/>
+                <div class="nav_links_wrapper">
+                    <ul class="nav_links flex">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                        <li>
+                            <label class="toggleDropMenu" for="dropMenu">
+                                Dropdown
+                                <i class="fa-solid fa-chevron-down"></i>
+                                <input type="checkbox" id="dropMenu">
+                                <div class="drop_menu_wrapper">
+                                    <div class="drop_menu">
+                                        <ul class="drop_body">
+                                            <li>
+                                                <a href="#">Action</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Another action</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="drop_foot">
+                                            <li>
+                                                <a href="#">Something else here</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
             </header>
             <main>main</main>
         </div>

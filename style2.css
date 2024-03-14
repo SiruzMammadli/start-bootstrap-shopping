@@ -56,6 +56,10 @@ button {
   }
 }
 
+#toggleHeader {
+  display: none;
+}
+
 .wrapper {
   color: black;
 
@@ -158,7 +162,7 @@ button {
 
             #dropMenu {
               display: none;
-              &:checked + .drop_menu {
+              &:checked + .drop_menu_wrapper .drop_menu {
                 opacity: 1;
                 visibility: visible;
               }
@@ -217,19 +221,90 @@ button {
 }
 
 @media (width < 992px) {
+  #toggleHeader {
+    &:checked + .nav_links_wrapper {
+      grid-template-rows: 1fr;
+    }
+  }
+
   .wrapper {
     .main_side {
       & header {
         display: block;
+        min-height: 60px;
         height: auto;
 
         .toggle_navbar {
           display: inline-flex;
         }
 
-        .nav_links {
-          display: grid;
-          /* grid-template-rows: 0fr; */
+        .nav_links_wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 200ms ease;
+            
+            .nav_links {
+              overflow: hidden;
+              flex-direction: column;
+              row-gap: 1rem;
+
+              li:first-of-type {
+                margin-top: .5rem;
+              }
+              #dropMenu {
+                &:checked + .drop_menu_wrapper {
+                  grid-template-rows: 1fr;
+                }
+              }
+              .drop_menu_wrapper {
+                display: grid;
+                grid-template-rows: 0fr;
+                transition: grid-template-rows 200ms ease;
+
+                .drop_menu {
+                  position: static;
+                  overflow: hidden;
+                  padding: 0;
+                  border: 0;
+                  width: 100%;
+                  background-color: transparent;
+
+                  .drop_foot {
+                    margin: 0;
+                    padding: 0;
+                    border: 0;
+                  }
+
+                  .drop_body {
+                    li:first-child {
+                      margin-top: .25rem;
+                    }
+                  }
+
+                  li {
+                    margin: 0;
+                    position: relative;
+
+                    &::before {
+                      content: '-';
+                      position: absolute;
+                      top: 50%;
+                      left: 0;
+                      transform: translateY(-50%);
+                    }
+
+                    a {
+                      color: rgb(var(--gray-text-clr));
+                      padding: 8px 16px;
+
+                      &:hover {
+                        background-color: transparent;
+                      }
+                    }
+                  }
+                }
+              }
+            }
         }
       }
     }
